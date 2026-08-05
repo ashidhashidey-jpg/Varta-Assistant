@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-100 dark:border-white/10;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-ink-900 dark:text-ink-100 antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink-900 dark:text-white;
+  }
+  /* Visible keyboard focus everywhere — accessibility floor */
+  :focus-visible {
+    outline: 2px solid #7C5CFC;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: rgba(124, 92, 252, 0.25);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 dark:bg-surface-dark/60 backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-glass rounded-2xl5;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-gradient text-white font-semibold
+      px-6 py-3 shadow-glow-violet transition-transform duration-200 ease-out
+      hover:scale-[1.03] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white/80 dark:bg-white/10
+      text-ink-900 dark:text-white font-semibold px-6 py-3 border border-ink-100 dark:border-white/15
+      transition-all duration-200 hover:bg-white dark:hover:bg-white/15 hover:-translate-y-0.5;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-ink-100 dark:border-white/10 bg-white/80 dark:bg-white/5
+      px-4 py-3 text-sm text-ink-900 dark:text-white placeholder:text-ink-300
+      focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-colors;
+  }
+
+  .label-text {
+    @apply text-xs font-semibold uppercase tracking-wide text-ink-500 dark:text-ink-300;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(124, 92, 252, 0.35);
+    border-radius: 999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
